@@ -16,12 +16,11 @@ export class NoteListComponent {
 
   }
 
-  getList(): Note[] {
+  getNotes(): Note[] {
+    if (this.status === 'trash') {
+      return this.noteService.trashNotes;
+    }
     return this.noteService.normalNotes;
-  }
-
-  getTrash(): Note[] {
-    return this.noteService.trashNotes;
   }
 
   changeFavFilter(filter:"all" | "fav"){
